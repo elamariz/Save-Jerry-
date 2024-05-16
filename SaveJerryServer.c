@@ -152,11 +152,11 @@ int main(int argc, char *argv[]) {
         die_with_error("Error: socket() Failed.");
 
     // Bind socket to a port
-    bzero((char *) &server_addr, sizeof(server_addr));
+    bzero((char *) &server_addr, sizeof(server_addr)); 
     port_no = atoi(argv[1]);
-    server_addr.sin_family = AF_INET; // Internet address
-    server_addr.sin_addr.s_addr = INADDR_ANY; // Any incoming interface
-    server_addr.sin_port = htons(port_no); // Local port
+    server_addr.sin_family = AF_INET; //  Sets the address family of the socket to IPv4.
+    server_addr.sin_addr.s_addr = INADDR_ANY; // Binds the socket to all incoming network interfaces
+    server_addr.sin_port = htons(port_no); // Sets the port number of the server socket
 
     if (bind(server_sock, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         die_with_error("Error: bind() Failed.");
@@ -166,8 +166,10 @@ int main(int argc, char *argv[]) {
 
     // Accept new connection
     client_size = sizeof(client_addr);
-    client_sock = accept(server_sock, (struct sockaddr *) &client_addr, &client_size);
-    if (client_sock < 0) die_with_error("Error: accept() Failed.");
+    client_sock = accept(server_sock, (struct sockaddr *) &client_addr, &client_size); // Creates socket for communication with the client
+    
+    if (client_sock < 0) 
+    	die_with_error("Error: accept() Failed."); 
 
     char playAgain = 'y';
 
@@ -180,9 +182,11 @@ int main(int argc, char *argv[]) {
         wordBank();
 
         // Send category, word, and points to client
-        snprintf(buffer, sizeof(buffer), "%s;%s;%d", category, word, points);
-        n = send(client_sock, buffer, strlen(buffer), 0);
-        if (n < 0) die_with_error("Error: send() failed");
+        snprintf(buffer, sizeof(buffer), "%s;%s;%d", category, word, points); // Formats the data into the buffer variable
+        n = send(client_sock, buffer, strlen(buffer), 0); // Sends the data stored in the buffer to the client socket
+        
+        if (n < 0) 
+            die_with_error("Error: send() failed");
 
         printf("\n----- Points: %d -----\n\n", points);
         setWord();
@@ -195,7 +199,7 @@ int main(int argc, char *argv[]) {
             bzero(buffer, 256);
             fgets(buffer, 255, stdin);
 
-            if (!isalpha(tolower(buffer[0]))) {
+            if (!isalpha(tolower(buffer[0]))) { // Check if the input is a letter
                 system("clear");
                 wrongGuessCount++;
                 printf("\nTries left: %d\n\n", 5 - wrongGuessCount);
@@ -285,4 +289,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-

@@ -99,5 +99,5 @@ Example:
 
 ```ascii
 T  O  M   🐱    v s.   🧀  J  E  R  R  Y
-Work together. Guess wisely. Save Jerry!
+Work together. Guess wisely. Save Jerry! Time is of the essence!
 ```

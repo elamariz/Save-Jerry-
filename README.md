@@ -8,10 +8,7 @@
 
 ## 🧩 Game Overview
 
-**Save Jerry** is a two-player terminal game inspired by Hangman.
-Players work together to guess a hidden word... but time is ticking!
-Tom is 5 steps away from catching Jerry, and every wrong guess brings him closer.
-Will teamwork save Jerry, or will Tom catch him?
+![SaveJerry_About](jerry_about.png)  
 
 ---
 

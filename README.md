@@ -90,7 +90,10 @@ Example:
 
 ## 🧑‍💻 Authors
 
-**Save Jerry** — An OS subject project developed in C using socket programming.
+* Rivera, Ela Mariz
+* Asis, Alleona Divine
+* Dela Torre, Angelea
+* Turiano, Almond Nicholas
 
 ---
 
